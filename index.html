@@ -639,7 +639,7 @@ const POR_PAG   = 20;
 // CONFIGURACIÓN — pega aquí la URL de tu Web App de Apps Script
 // Menú: Implementar → Nueva implementación → Web App → Copiar URL
 // ══════════════════════════════════════════════════════════════
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzP5IW52jxTcMVsmYbvo8ImasV60yHvI4V3gKp-t-Jd9bP8cGH6CFS5cdsS-pYc579f2A/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw2PY-UoZtYDuJiWpta3jFxTKxnYeMA7Ass_Jg0c61u52DGcUU82UPeJnIuLQ5KWxptKA/exec';
 
 // ── Utils ─────────────────────────────────────────────────────
 const $  = id => document.getElementById(id);
@@ -1655,10 +1655,11 @@ async function handleFileUpload(fieldId){
 
   try {
     const base64 = await fileToBase64(file);
-    const result = await call('subirArchivoDrive', {
-      nombre:   file.name,
-      mimeType: file.type || 'application/octet-stream',
-      data:     base64
+    const result = await call('subirAdjunto', {
+      nombre:    file.name,
+      mimeType:  file.type || 'application/octet-stream',
+      data:      base64,
+      carpetaId: '1ftwcQZX2ipZarZiU45A0ow4FeOJAOjf8'
     });
     if(result.ok){
       // Actualizar valor oculto
